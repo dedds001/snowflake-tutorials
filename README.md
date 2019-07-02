@@ -122,5 +122,7 @@ Credits: https://docs.snowflake.net/manuals/user-guide-getting-started.html
 
 
 ---code to run snowflake.sql
-Deborahs-MacBook-Air:.snowsql deborahedds$ snowsql -c example -s public -f /Users/deborahedds/Downloads/snowflake1.sql
+
+
+snowsql deborahedds$ snowsql -c example -s public -f /Users/deborahedds/Downloads/snowflake1.sql -o output_format=csv -o header=false -o timing=false -o friendly=false  > snowsql.csv
 
