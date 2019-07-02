@@ -117,3 +117,10 @@ drop warehouse if exists sf_tuts_wh;
 https://docs.snowflake.net/manuals/user-guide/data-unload-s3.html
 
 Credits: https://docs.snowflake.net/manuals/user-guide-getting-started.html
+
+
+
+
+---code to run snowflake.sql
+Deborahs-MacBook-Air:.snowsql deborahedds$ snowsql -c example -s public -f /Users/deborahedds/Downloads/snowflake1.sql
+
