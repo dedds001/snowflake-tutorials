@@ -71,3 +71,5 @@ on_error = 'skip_file';
      ; 
 
  SELECT * from table(get_avg_rating('%Toy Story%')); 
+                                    
+                                    ---
