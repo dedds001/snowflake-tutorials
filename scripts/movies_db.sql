@@ -6,7 +6,6 @@ create or replace table movies (
 
 
 
-
   put file:///Users/deborahedds/Downloads/movies1.csv @snowdb.public.%movies;
 
   list @snowdb.public.%movies;
@@ -42,11 +41,8 @@ on_error = 'skip_file';
 
 
 
-select m.title, AVG(r.rating) from movies m JOIN ratings r on m.MOVIEID=r.movieid GROUP BY m.ti
-                                     tle HAVING avg(rating) <5 ORDER BY AVG(r.rating) DESC LIMIT 5;
 
-
------CREATE function 
+-----CREATE UDF to retrieve average rating of movies when given the title 
 
 
  CREATE or replace function get_avg_rating(movie_title string)
