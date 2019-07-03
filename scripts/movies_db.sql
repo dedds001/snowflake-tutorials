@@ -1,3 +1,9 @@
+-----MORE PRACTICE with Snowflake---------------
+-----Create table, database, warehouse in snowflake and upload csv file
+-----Then create UDF to query the tables
+-----pipe the output of the sql file into csv
+
+
 create or replace database moviedb;
 
 select current_database(), current_schema();
