@@ -1,19 +1,31 @@
+create or replace database moviedb;
+
+select current_database(), current_schema();
+
+
+
 create or replace table movies (
-  movieid string contraint primary key ,
+  movieid string,
   title string ,
-  genres string 
+  genres string,
+  primary key (movieid) 
   );
 
+create or replace warehouse moviedb_wh with
+  warehouse_size='X-SMALL'
+  auto_suspend = 180
+  auto_resume = true
+  initially_suspended=true;
 
 
-  put file:///Users/deborahedds/Downloads/movies1.csv @snowdb.public.%movies;
+  put file:///Users/deborahedds/Downloads/movies1.csv @moviedb.public.%movies;
 
-  list @snowdb.public.%movies;
+  list @moviedb.public.%movies;
 
 
 copy into movies
 from @%movies
-file_format = (type = csv field_optionally_enclosed_by='"')
+file_format = (type = csv field_optionally_enclosed_by='"' skip_header =1)
 pattern = '.*movies1.csv.gz'
 on_error = 'skip_file';
 
@@ -29,9 +41,9 @@ create or replace table ratings (
   );
 
 
-  put file:///Users/deborahedds/Downloads/ml-latest-small/ratings.csv @snowdb.public.%ratings;
+  put file:///Users/deborahedds/Downloads/ml-latest-small/ratings.csv @moviedb.public.%ratings;
 
-  list @snowdb.public.%ratings;
+  list @moviedb.public.%ratings;
 
 copy into ratings
 from @%ratings
